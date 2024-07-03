@@ -28,18 +28,24 @@ function App() {
     passwordRef.current?.select()
     passwordRef.current?.setSelectionRange(0, length);
     window.navigator.clipboard.writeText(password);
-  },[password])
+  }, [password])
 
-  useEffect(()=>passwordGenerator(),[setLength,passwordGenerator,numberAllowed,charAllowed])
+  useEffect(() => passwordGenerator(), [setLength, passwordGenerator, numberAllowed, charAllowed])
 
   return (
     <>
       <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-orange-500 bg-gray-700">
 
         <h1 className='text-4xl text-center text-white my-3'>Password Generator</h1>
+
         <div className="flex shadow rounded-lg overflow-hidden mb-4">
+
           <input type="text" value={password} className='outline-none w-full py-1 px-3' placeholder='password' readOnly ref={passwordRef} />
-          <button onClick={copyPassToClip} className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'> Copy</button>
+
+          <button onClick={copyPassToClip} className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'>
+            Copy
+          </button>
+
         </div>
 
 
@@ -62,10 +68,9 @@ function App() {
           </div>
 
         </div>
-        <div>
-        <button className='text-center my-3 flex items-center' onClick={passwordGenerator} type="button" >Generate</button>
-        <button className='text-center my-3 flex items-center' onClick={()=>setPassword("")} type="button" >clear</button>
-
+        <div className="flex justify-between gap-x-2">
+          <button className='text-center my-3 flex items-center border-2 px-4 py-1 rounded-md bg-gray-800 border-orange-700' onClick={passwordGenerator} type="button" >Generate</button>
+          <button className='text-center my-3 flex items-center border-2 px-4 py-1 rounded-md bg-gray-800 border-orange-700' onClick={() => setPassword("")} type="button" >Reset</button>
         </div>
       </div>
     </>
